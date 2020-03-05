@@ -1,0 +1,54 @@
+<!doctypehtml>
+<html lang=en-us>
+
+<head>
+    <meta charset=utf-8>
+    <meta content="text/html; charset=utf-8" http-equiv=Content-Type>
+    <title>Emscripten-Generated Code</title>
+    <style>
+        body {
+            font-family: arial;
+            margin: 0;
+            padding: none
+        }
+        
+        input[type=submit] {
+        	position: relative;
+        	padding:5px 15px; 
+        	top: 20px;
+        	left: 100px;
+        }
+
+/* CSS Style below moved to the C file */
+/*        canvas.emscripten {
+            border: 0 none;
+            position: absolute;
+            top: 70px;
+            left: 80px;
+        }
+*/
+
+    </style>
+</head>
+
+<body>
+	<h1> Click below to win a MILLION DOLLARS!!!<h1>
+		<form action="http://google.com">
+			<input type="submit" value="Enter Here" />
+		</form>
+
+    <canvas class=emscripten id=canvas></canvas>
+    
+    <script type="text/javascript">
+    	var Module = {
+    			canvas: function() {
+                    var e = document.getElementById("canvas");
+                    return e.addEventListener("webglcontextlost", function(e) {
+                        alert("WebGL context lost. You will need to reload the page."), e.preventDefault()
+                    }, !1), e}()
+    	};
+    </script>
+    <script async src=triangle.js></script>
+</body>
+
+</html>
